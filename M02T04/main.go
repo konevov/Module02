@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	bookBase := map[string]map[string][]string{
@@ -20,16 +18,15 @@ func main() {
 	}
 
 	counter := 0
-	for key1 := range bookBase {
-		key2 := bookBase[key1]
+	for key, val := range bookBase {
 
-		for _, v := range key2 {
+		for _, v := range val {
 			counter++
 			num := len(v)
-			fmt.Printf("Имя: %s, количество изданий на руках: %v\n", key1, num)
+			fmt.Printf("Имя: %s, количество изданий на руках: %v\n", key, num)
 		}
 
 	}
 	fmt.Println("Количество читателей с изданиями на руках:", counter)
-	fmt.Println("Всего читателей:", len(bookBase))
+
 }
