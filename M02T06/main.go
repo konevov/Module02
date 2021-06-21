@@ -3,21 +3,19 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"os"
 	"time"
 )
 
-func track(msg string) (string, time.Time) {
-	return msg, time.Now()
-}
+var T1 = time.Now()
 
-func duration(msg string, start time.Time) {
-	log.Printf("%v: %v\n", msg, time.Since(start))
+func logTime() {
+	T2 := time.Now()
+	fmt.Println(" main function execution time: ", T2.Sub(T1))
 }
 
 func main() {
-	defer duration(track(" main function execution time: "))
+	defer logTime()
 
 	fileOpen, err := os.Open("data/in.txt")
 	if err != nil {
