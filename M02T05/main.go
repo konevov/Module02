@@ -31,5 +31,4 @@ func main() {
 	x := "33"
 	fmt.Println("Result of the contains function:", contains(a, x))
 	fmt.Println("Result of the getMax function:", getMax(-2, -4))
-	// Changed solution 05 task
 }
