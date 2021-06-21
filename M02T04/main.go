@@ -28,5 +28,4 @@ func main() {
 
 	}
 	fmt.Println("Количество читателей с изданиями на руках:", counter)
-	// Changed solution
 }
