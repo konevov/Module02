@@ -14,10 +14,7 @@ func contains(a []string, x string) bool {
 }
 
 func getMax(v ...int64) (res int64) {
-	const (
-		MinInt64 = -1 << 63
-	)
-	res = MinInt64
+	res = -1 << 63
 	for _, v := range v {
 		if v > res {
 			res = v
