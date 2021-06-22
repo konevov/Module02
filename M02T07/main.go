@@ -23,6 +23,7 @@ func main() {
 
 	defer func() {
 		if panicErr := recover(); panicErr != nil {
+			fmt.Println(panicErr)
 			data, err := ioutil.ReadFile("data/data_out.txt")
 			if err != nil {
 				fmt.Println("File reading error", err)
@@ -43,7 +44,7 @@ func main() {
 		lineCount++
 
 		if name == "" || address == "" || city == "" {
-			err := fmt.Sprintf("parse error: empty field on string %d", lineCount)
+			err := fmt.Sprintf("parse error: empty field on string %d\n", lineCount)
 			panic(err)
 		}
 
