@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"strings"
 )
@@ -11,25 +12,30 @@ import (
 func main() {
 	fileOpen, err := os.Open("data/in.txt")
 	if err != nil {
-		fmt.Println(err)
-		return
+		log.Fatal(err)
 	}
-	defer fileOpen.Close()
+	defer func() {
+		if err := fileOpen.Close(); err != nil {
+			log.Fatal(err)
+		}
+	}()
 
 	fileCreate, err := os.Create("data/data_out.txt")
 	if err != nil {
-		fmt.Println(err)
-		return
+		log.Fatal(err)
 	}
-	defer fileCreate.Close()
+	defer func() {
+		if err := fileCreate.Close(); err != nil {
+			log.Fatal(err)
+		}
+	}()
 
 	defer func() {
 		if panicErr := recover(); panicErr != nil {
 			fmt.Println(panicErr)
 			data, err := ioutil.ReadFile("data/data_out.txt")
 			if err != nil {
-				fmt.Println("File reading error", err)
-				return
+				log.Fatal(err)
 			}
 			fmt.Println(string(data))
 		}
