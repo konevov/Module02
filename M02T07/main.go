@@ -11,13 +11,15 @@ import (
 func main() {
 	fileOpen, err := os.Open("data/in.txt")
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		return
 	}
 	defer fileOpen.Close()
 
 	fileCreate, err := os.Create("data/data_out.txt")
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		return
 	}
 	defer fileCreate.Close()
 
@@ -29,7 +31,7 @@ func main() {
 				fmt.Println("File reading error", err)
 				return
 			}
-			fmt.Println("Contents of file:", string(data))
+			fmt.Println(string(data))
 		}
 
 	}()
