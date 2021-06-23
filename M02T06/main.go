@@ -7,11 +7,11 @@ import (
 	"time"
 )
 
-var t1 = time.Now()
+var tStart = time.Now()
 
 func logTime() {
-	t2 := time.Now()
-	fmt.Println(" main function execution time: ", t2.Sub(t1))
+	tEnd := time.Now()
+	fmt.Println("Main function execution time: ", tEnd.Sub(tStart))
 }
 
 func main() {
