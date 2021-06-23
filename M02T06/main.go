@@ -7,11 +7,11 @@ import (
 	"time"
 )
 
-var T1 = time.Now()
+var tStart = time.Now()
 
 func logTime() {
-	T2 := time.Now()
-	fmt.Println(" main function execution time: ", T2.Sub(T1))
+	tEnd := time.Now()
+	fmt.Println("Main function execution time: ", tEnd.Sub(tStart))
 }
 
 func main() {
@@ -19,7 +19,8 @@ func main() {
 
 	fileOpen, err := os.Open("data/in.txt")
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		return
 	}
 	defer fileOpen.Close()
 
@@ -33,6 +34,8 @@ func main() {
 	defer func() {
 		stat, err := fileCreate.Stat()
 		if err != nil {
+			fmt.Println(err)
+			return
 		}
 		fmt.Printf("The file is %d bytes long\n", stat.Size())
 		fmt.Printf("The number of lines in the file %d\n", lineCount)
